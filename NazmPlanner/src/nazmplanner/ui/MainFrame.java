@@ -1,6 +1,5 @@
 package nazmplanner.ui;
 
-import java.awt.FlowLayout;
 import javax.swing.JFrame;
 import nazmplanner.ui.tasks.*;
 

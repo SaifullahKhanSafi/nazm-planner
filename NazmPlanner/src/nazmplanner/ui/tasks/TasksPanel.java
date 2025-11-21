@@ -13,6 +13,11 @@ public class TasksPanel extends JPanel
     
     public TasksPanel()
     {
+        initLayout();
+    }
+    
+    private void initLayout()
+    {
         super.setLayout(new GridBagLayout());
         
         sidebarPanel = new SidebarPanel();
@@ -29,4 +34,5 @@ public class TasksPanel extends JPanel
                   .setWeight(0.80, 1.00)
                   .setFill(GridBagConstraints.BOTH));
     }
+    
 }

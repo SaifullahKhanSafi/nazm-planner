@@ -7,6 +7,11 @@ public class SidebarPanel extends JPanel
 {
     public SidebarPanel()
     {
+        initStyling();
+    }
+    
+    private void initStyling()
+    {
         super.setBackground(Color.GRAY);
     }
 }
