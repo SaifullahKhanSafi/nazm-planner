@@ -6,6 +6,16 @@ import javax.swing.JPanel;
 
 import nazmplanner.ui.util.GBC;
 
+/**
+ * <h2>TasksPanel</h2>
+
+ * <p>The primary view for all the Task related things. Has a sidebar on 
+ * the left and a primary view on the right. </p>
+ *  
+ * @brief Has a sidebar and a primary view for showing tasks.
+ * @author Fahad Hassan
+ * @version 21/11/2025
+ */
 public class TasksPanel extends JPanel
 {
     private PrimaryPanel primaryPanel;

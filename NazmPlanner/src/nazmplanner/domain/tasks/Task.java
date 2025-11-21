@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 /**
- * Task class.
+ * <h2>Task</h2>
  * 
  * @author Fahad Hassan
  * @version 19/11/2025

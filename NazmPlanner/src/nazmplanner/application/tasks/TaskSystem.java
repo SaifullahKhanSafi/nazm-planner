@@ -11,9 +11,10 @@ import java.util.UUID;
 import nazmplanner.domain.tasks.*;
 
 /**
- * TaskSystem
+ * <h2>TaskSystem</h2>
  * 
- * @brief Manages tasks (CRUD) among other things.
+ * <p>Manages tasks (CRUD) among other things.</p>
+ * 
  * @author Fahad Hassan
  * @version 19/11/25
  */
