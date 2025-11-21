@@ -1,6 +1,5 @@
 package nazmplanner.domain.tasks;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
@@ -9,7 +8,7 @@ import java.util.UUID;
  * <h2>Task</h2>
  * 
  * @author Fahad Hassan
- * @version 19/11/2025
+ * @version 22/11/2025
  */
 public class Task
 {
@@ -21,11 +20,11 @@ public class Task
     private String title;
     private String description;
     private TaskStatus status;
-    private LocalDate dueDate;
+    private LocalDateTime dueDate;
  
     /* CONSTRUCTOR */
     
-    public Task(String title, String description, LocalDate dueDate) 
+    public Task(String title, String description, LocalDateTime dueDate) 
     {
         this.ID = UUID.randomUUID();
         this.creationDate = LocalDateTime.now();
@@ -72,12 +71,12 @@ public class Task
         return status;
     }
 
-    public LocalDate getDueDate()
+    public LocalDateTime getDueDate()
     {
         return dueDate;
     }
 
-    public void setDueDate(LocalDate dueDate)
+    public void setDueDate(LocalDateTime dueDate)
     {
         this.dueDate = Objects.requireNonNull(dueDate);
     }   

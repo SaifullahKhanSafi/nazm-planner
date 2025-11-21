@@ -1,6 +1,6 @@
 package nazmplanner.domain.tasks;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import java.util.UUID;
  * <p>Manages tasks (CRUD) among other things.</p>
  * 
  * @author Fahad Hassan
- * @version 19/11/25
+ * @version 22/11/25
  */
 public class TaskSystem
 {
@@ -26,7 +26,7 @@ public class TaskSystem
         taskRepository = new HashMap<UUID, Task>();
     }
 
-    public Task addTask(String title, String description, LocalDate dueDate)
+    public Task addTask(String title, String description, LocalDateTime dueDate)
     {
         if (Objects.isNull(title) || title.trim().isEmpty())
         {
