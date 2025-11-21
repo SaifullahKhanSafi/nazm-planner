@@ -20,15 +20,15 @@ import nazmplanner.ui.util.GBC;
 public class PrimaryPanel extends JPanel
 {
     private HeaderPanel headerPanel;
-    private ListViewPanel listViewPanel;
-    private JScrollPane listViewScrollPane;
+    private TaskCardListPanel taskCardListPanel;
+    private JScrollPane taskCardListScrollPane;
     private CreationFormPanel creationFormPanel;
     
     public PrimaryPanel()
     {
         headerPanel = new HeaderPanel("Tasks");
-        listViewPanel = new ListViewPanel();
-        listViewScrollPane = new JScrollPane(listViewPanel);
+        taskCardListPanel = new TaskCardListPanel();
+        taskCardListScrollPane = new JScrollPane(taskCardListPanel);
         creationFormPanel = new CreationFormPanel();
         
         initStyling();
@@ -45,18 +45,18 @@ public class PrimaryPanel extends JPanel
         super.setLayout(new GridBagLayout());
         
         super.add(headerPanel, 
-                  new GBC(0, 0, 1, 0)
+                  new GBC(0, 0, 1, 1)
                   .setWeight(1.00, 0.00)
                   .setAnchor(GridBagConstraints.NORTH)
                   .setFill(GridBagConstraints.HORIZONTAL));
         
-        super.add(listViewScrollPane,
-                  new GBC(0, 1, 1, 0)
+        super.add(taskCardListScrollPane,
+                  new GBC(0, 1, 1, 1)
                   .setWeight(1.00, 1.00)
                   .setFill(GridBagConstraints.BOTH));
         
         super.add(creationFormPanel,
-                  new GBC(0, 0, 2, 0)
+                  new GBC(0, 2, 1, 1)
                   .setWeight(1.00, 0.00)
                   .setAnchor(GridBagConstraints.SOUTH)
                   .setFill(GridBagConstraints.HORIZONTAL));
