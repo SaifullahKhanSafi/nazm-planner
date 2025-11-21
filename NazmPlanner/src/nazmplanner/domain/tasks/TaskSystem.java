@@ -1,4 +1,4 @@
-package nazmplanner.application.tasks;
+package nazmplanner.domain.tasks;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
-import nazmplanner.domain.tasks.*;
 
 /**
  * <h2>TaskSystem</h2>
