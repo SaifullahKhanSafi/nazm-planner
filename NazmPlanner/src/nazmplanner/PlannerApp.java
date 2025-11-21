@@ -1,15 +1,21 @@
 package nazmplanner;
 
+import java.awt.EventQueue;
+import nazmplanner.ui.MainFrame;
+
 /**
  * Entry point of the app.
  */
 public class PlannerApp
 {
-
-    public static void main(String[] args)
+   
+    public void main()
     {
-        // TODO Auto-generated method stub
-
+        EventQueue.invokeLater(() -> 
+        {
+            MainFrame mainFrame = new MainFrame();
+            mainFrame.setVisible(true);
+        });
     }
 
 }
