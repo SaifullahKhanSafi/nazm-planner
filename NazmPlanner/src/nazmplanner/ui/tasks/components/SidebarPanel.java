@@ -1,7 +1,8 @@
-package nazmplanner.ui.tasks;
+package nazmplanner.ui.tasks.components;
 
 import java.awt.Color;
 import javax.swing.JPanel;
+import nazmplanner.ui.tasks.TasksMediator;
 
 /**
  * <h2>SidebarPanel</h2>
@@ -9,12 +10,16 @@ import javax.swing.JPanel;
  * <p>Not functional right now. Supposed to display task lists.</p>
  * 
  * @author Fahad Hassan
- * @version 21/11/2025 
+ * @version 22/11/2025 
  */
 public class SidebarPanel extends JPanel
 {
-    public SidebarPanel()
+    
+    private TasksMediator tasksMediator;
+    
+    public SidebarPanel(TasksMediator tasksMediator)
     {
+        this.tasksMediator = tasksMediator;
         initStyling();
     }
     
@@ -22,4 +27,5 @@ public class SidebarPanel extends JPanel
     {
         super.setBackground(Color.GRAY);
     }
+    
 }

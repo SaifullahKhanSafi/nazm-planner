@@ -1,11 +1,9 @@
 package nazmplanner.application.tasks;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import nazmplanner.domain.tasks.Task;
 import nazmplanner.domain.tasks.TaskSystem;
-import nazmplanner.ui.tasks.CreationFormPanel;
-import nazmplanner.ui.tasks.TaskCardListPanel;
+import nazmplanner.ui.tasks.TasksMediator;
+import nazmplanner.ui.tasks.contracts.TaskCreatorInterface;
 
 /**
  * <h2>TaskController</h2>
@@ -15,28 +13,23 @@ import nazmplanner.ui.tasks.TaskCardListPanel;
  * @author Fahad Hassan
  * @version 22/11/2025
  */
-public class TaskController
+public class TaskController implements TaskCreatorInterface
 {
-    private final TaskSystem taskSystem;
-    private final TaskCardListPanel taskCardListPanel;
-    private final CreationFormPanel creationFormPanel;
     
-    public TaskController(TaskSystem taskSystem, TaskCardListPanel taskCardListPanel, CreationFormPanel creationFormPanel)
+    private final TasksMediator tasksMediator;
+    private final TaskSystem taskSystem;
+    
+    public TaskController(TaskSystem taskSystem, TasksMediator tasksMediator)
     {
         this.taskSystem = taskSystem;
-        this.taskCardListPanel = taskCardListPanel;
-        this.creationFormPanel = creationFormPanel;
-        
-        this.creationFormPanel.setTaskCreationListener((title, desc, dueDate) -> 
-        {
-            createNewTask(title, desc, dueDate);
-        });
+        this.tasksMediator = tasksMediator;
+        tasksMediator.setOnAddTaskHandler(this);
     }
-    
-    public void createNewTask(String title, String description, LocalDateTime dueDate)
+        
+    public void addTask(String title, String description, LocalDateTime dueDate)
     {
         taskSystem.addTask(title, description, dueDate);
-        taskCardListPanel.setTasks(taskSystem.getAllTasks());
-        
+        tasksMediator.requestUpdateTasks(taskSystem.getAllTasks());
     }
+    
 }

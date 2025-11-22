@@ -1,21 +1,18 @@
-package nazmplanner.ui.tasks;
+package nazmplanner.ui.tasks.components;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
-
-import nazmplanner.application.tasks.TaskController;
 import nazmplanner.ui.components.CardPanel;
+import nazmplanner.ui.tasks.TasksMediator;
 
 /**
  * <h2>CreationFormPanel</h2>
@@ -27,13 +24,16 @@ import nazmplanner.ui.components.CardPanel;
  */
 public class CreationFormPanel extends CardPanel
 {
-    private TaskCreationListener listener;
+
+    private TasksMediator tasksMediator;
     private JButton addButton;
     private JTextField titleField;
     private JSpinner dateSpinner;
     
-    public CreationFormPanel()
+    public CreationFormPanel(TasksMediator tasksMediator)
     {
+        this.tasksMediator = tasksMediator;
+        
         initComponents();
         initLayout();
         initStyling();
@@ -50,7 +50,6 @@ public class CreationFormPanel extends CardPanel
         dateSpinner = new JSpinner(model);        
         JSpinner.DateEditor editor = new JSpinner.DateEditor(dateSpinner, "dd/MM/yyyy HH:mm");
         dateSpinner.setEditor(editor);
-        dateSpinner.setPreferredSize(new Dimension(150, 25));
     }
     
     private void initLayout()
@@ -67,28 +66,22 @@ public class CreationFormPanel extends CardPanel
     private void initStyling()
     {
         setBackground(Color.DARK_GRAY);
+        dateSpinner.setPreferredSize(new Dimension(150, 25));
     }
     
     private void initEvents()
     {
         addButton.addActionListener(e -> 
         {
-            if (listener != null) 
-            {
-                String title = titleField.getText();
+            String title = titleField.getText();
 
-                LocalDateTime dueDate = LocalDateTime.ofInstant(
-                    ((Date) dateSpinner.getValue()).toInstant(),
-                    ZoneId.systemDefault()
-                );
-                listener.taskCreated(title, "", dueDate);
-            }
+            LocalDateTime dueDate = LocalDateTime.ofInstant(
+                ((Date) dateSpinner.getValue()).toInstant(),
+                ZoneId.systemDefault()
+            );
+            
+            tasksMediator.requestAddTask(title, "", dueDate);
         });
-    }
-    
-    public void setTaskCreationListener(TaskCreationListener listener)
-    {
-        this.listener = listener;
     }
     
 }

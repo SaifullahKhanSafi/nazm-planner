@@ -22,15 +22,14 @@ public class PlannerApp
     {
         EventQueue.invokeLater(() -> 
         {
-            
+            /* UI */
             MainFrame mainFrame = new MainFrame();
-
+            
+            /* Domain */
             TaskSystem taskSystem = new TaskSystem();
             
-            TaskController taskController = new TaskController(
-                    taskSystem,
-                    mainFrame.getTasksPanel().getPrimaryPanel().getTaskCardListPanel(),
-                    mainFrame.getTasksPanel().getPrimaryPanel().getCreationFormPanel());
+            /* Application */
+            TaskController taskController = new TaskController(taskSystem, mainFrame.getTasksMediator());
             
             mainFrame.setVisible(true);
         });

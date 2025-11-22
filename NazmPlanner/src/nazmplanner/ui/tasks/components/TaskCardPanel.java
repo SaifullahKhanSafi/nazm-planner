@@ -1,8 +1,7 @@
-package nazmplanner.ui.tasks;
+package nazmplanner.ui.tasks.components;
 
 import java.awt.Color;
 import java.time.format.DateTimeFormatter;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;

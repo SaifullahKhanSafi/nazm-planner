@@ -14,32 +14,27 @@ import nazmplanner.ui.tasks.*;
  */
 public class MainFrame extends JFrame
 {
+    
+    private final TasksMediator tasksMediator;
     private static final int DEFAULT_WIDTH = 800;
     private static final int DEFAULT_HEIGHT = 600;
     private TasksPanel tasksPanel;
     
     public MainFrame()
     {
+        this.tasksMediator = new TasksMediator();
+        
         super.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         super.setTitle("Nazm Planner");
         
-        tasksPanel = new TasksPanel();
+        tasksPanel = new TasksPanel(tasksMediator);
         super.add(tasksPanel);
     }
-
-    public static int getDefaultWidth()
+    
+    public TasksMediator getTasksMediator()
     {
-        return DEFAULT_WIDTH;
+        return tasksMediator;
     }
 
-    public static int getDefaultHeight()
-    {
-        return DEFAULT_HEIGHT;
-    }
-
-    public TasksPanel getTasksPanel()
-    {
-        return tasksPanel;
-    }
 }

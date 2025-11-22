@@ -4,6 +4,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 
+import nazmplanner.ui.tasks.components.PrimaryPanel;
+import nazmplanner.ui.tasks.components.SidebarPanel;
 import nazmplanner.ui.util.GBC;
 
 /**
@@ -14,40 +16,39 @@ import nazmplanner.ui.util.GBC;
  *  
  * @brief Has a sidebar and a primary view for showing tasks.
  * @author Fahad Hassan
- * @version 21/11/2025
+ * @version 22/11/2025
  */
 public class TasksPanel extends JPanel
 {
+    private TasksMediator tasksMediator;
     private PrimaryPanel primaryPanel;
     private SidebarPanel sidebarPanel;
     
-    public TasksPanel()
+    public TasksPanel(TasksMediator tasksMediator)
     {
+        this.tasksMediator = tasksMediator;
+        
+        initComponents();
         initLayout();
     }
     
-    public PrimaryPanel getPrimaryPanel()
+    
+    private void initComponents()
     {
-        return primaryPanel;
-    }
-
-    public SidebarPanel getSidebarPanel()
-    {
-        return sidebarPanel;
+        sidebarPanel = new SidebarPanel(tasksMediator);
+        primaryPanel = new PrimaryPanel(tasksMediator);
     }
     
     private void initLayout()
     {
         super.setLayout(new GridBagLayout());
         
-        sidebarPanel = new SidebarPanel();
         super.add(sidebarPanel, 
                   new GBC(0, 0, 1, 1)
                   .setAnchor(GridBagConstraints.SOUTH)
                   .setWeight(0.20, 1.00)
                   .setFill(GridBagConstraints.BOTH));
         
-        primaryPanel = new PrimaryPanel();
         super.add(primaryPanel, 
                   new GBC(1, 0, 1, 1)
                   .setAnchor(GridBagConstraints.NORTH)
